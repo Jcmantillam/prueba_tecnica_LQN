@@ -1,4 +1,23 @@
 from django.db import models
+from app.constants import (
+    #People contants
+    MALE,
+    FEMALE,
+    HERMAPHRODITE,
+    NA,
+
+    BLACK,
+    BROWN,
+    BLONDE,
+    RED,
+    WHITE,
+    BALD,
+    YELLOW,
+    GREEN,
+    PURPLE,
+    UNKNOWN,
+
+)
 from model_utils.models import TimeStampedModel
 
 
@@ -30,10 +49,6 @@ class Planet(TimeStampedModel, SimpleNameModel):
 
 class People(TimeStampedModel, SimpleNameModel):
     """ Personajes del universo de Star Wars """
-    MALE = 'male'
-    FEMALE = 'female'
-    HERMAPHRODITE = 'hermaphrodite'
-    NA = 'n/a'
 
     GENDER = (
         (MALE, 'Male'),
@@ -42,11 +57,30 @@ class People(TimeStampedModel, SimpleNameModel):
         (NA, 'N/A'),
     )
 
+    HAIR_COLOR = [
+        (BLACK, 'Black'),
+        (BROWN, 'Brown'),
+        (BLONDE, 'Blonde'),
+        (RED, 'Red'),
+        (WHITE, 'White'),
+        (BALD, 'Bald'),
+    ]
+
+    EYE_COLOR = [
+        (BLACK, 'Black'),
+        (BROWN, 'Brown'),
+        (YELLOW, 'Yellow'),
+        (RED, 'Red'),
+        (GREEN, 'Green'),
+        (PURPLE, 'Purple'),
+        (UNKNOWN, 'Unknown'),
+    ]
+
     height = models.CharField(max_length=16, blank=True)
     mass = models.CharField(max_length=16, blank=True)
-    hair_color = models.CharField(max_length=32, blank=True)
+    hair_color = models.CharField(max_length=32, blank=True, choices=HAIR_COLOR)
     skin_color = models.CharField(max_length=32, blank=True)
-    eye_color = models.CharField(max_length=32, blank=True)
+    eye_color = models.CharField(max_length=32, blank=True, choices=EYE_COLOR)
     birth_year = models.CharField(max_length=16, blank=True)
     gender = models.CharField(max_length=64, choices=GENDER)
     home_world = models.ForeignKey(Planet, on_delete=models.CASCADE, related_name='inhabitants')
