@@ -82,6 +82,12 @@ def create_or_update_character_mutation_process(people, data, id=None):
         people_object.save()
 
     if films:
+        # delete previous realtions
+        previews_character_films = Film.objects.filter(characters=people_object)
+        for film in previews_character_films:
+            film.characters.remove(people_object)
+        
+        # save the new films
         for film in films:
             film.characters.add(people_object)
 
