@@ -73,16 +73,16 @@ def create_or_update_character_mutation_process(people, data, id=None):
             pass
         for field, value in data.items():
             setattr(people_object, field, value)
+        people_object.save()
     else:
         people_object = people(**data)
     
     if planet_object:
         people_object.home_world = planet_object.first()
+        people_object.save()
 
     if films:
         for film in films:
             film.characters.add(people_object)
-
-    people_object.save()
 
     return people_object
