@@ -9,4 +9,4 @@ python 'parte a.py'
 python 'parte b.py'
 ```
 ## Mini proyecto
-Dentro de la carpeta del mismo nombre se encuentran el proyecto, Este proyecto fue clonado del [repositorio](https://github.com/LQNTech/swapi-back).
+Dentro de la carpeta del mismo nombre se encuentran el proyecto: Este proyecto fue clonado del [repositorio](https://github.com/LQNTech/swapi-back).
