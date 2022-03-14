@@ -12,7 +12,7 @@ def generic_model_mutation_process(model, data, id=None, commit=True):
             enlists the fields that will be used in the model
         id : int(optional)
             used to indicate if the process will be an update,
-            and seache the object in db.
+            and searches the object in db.
         commit: bool(optional)
             indicates if the object will be seved on db
     Returns
@@ -38,7 +38,23 @@ def generic_model_mutation_process(model, data, id=None, commit=True):
 
 
 def create_or_update_character_mutation_process(people, data, id=None):
+    '''
+    Method used to create or update characters, it is a realtionship between
+    Film and People, the last has a realtion with Planet
 
+    Parameters
+    ----------
+        model : People
+            model in which the data should be inserted
+        data : Dict
+            enlists the fields that will be used in the model
+        id : int(optional)
+            used to indicate if the process will be an update,
+            and searches the object in db.
+    Returns
+    -------
+        model object seved or updated, or None if get model object went wrong
+    '''
     if 'home_world_name' in data.keys():
         planet_object = Planet.objects.filter(name=data.pop('home_world_name'))
     else:
