@@ -18,7 +18,7 @@ git clone https://github.com/gustav0/swapi.git
 Move into the repo directory, you can use virtaulenv:
 
 ```
-python.exe -m venv env
+python -m venv env
 .\env\Scripts\activat
 ```
 Install the dependencies:
@@ -44,3 +44,5 @@ The service should be available in the URL: `127.0.0.1:8000/graphql`.
 ```
 python manage.py test
 ```
+## Collections
+You can see some examples for how to work with the project [here](https://go.postman.co/workspace/LQN~f2f87426-0503-4c6e-8978-02bd1b658314/collection/7532490-9aeec079-2472-4760-b7d5-a654f781d832?action=share&creator=7532490)
