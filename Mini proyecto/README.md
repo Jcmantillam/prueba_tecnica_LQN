@@ -12,10 +12,11 @@
 
 Clone the project
 ```
-git clone https://github.com/gustav0/swapi.git
+git clone https://github.com/Jcmantillam/prueba_tecnica_LQN
+cd 'Mini proyecto'
 ```
 
-Move into the repo directory, you can use virtaulenv:
+Using virtualenv:
 
 ```
 python -m venv env
