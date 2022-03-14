@@ -1,3 +1,5 @@
+from app.models import Planet, Film
+
 def generic_model_mutation_process(model, data, id=None, commit=True):
     '''
     Method used to create or update objects in db.
@@ -33,3 +35,38 @@ def generic_model_mutation_process(model, data, id=None, commit=True):
         item.save()
 
     return item
+
+
+def create_or_update_character_mutation_process(people, data, id=None):
+
+    if 'home_world_name' in data.keys():
+        planet_object = Planet.objects.filter(name=data.pop('home_world_name'))
+    else:
+        planet_object = False
+    
+    if 'films_names' in data.keys():
+        films = Film.objects.filter(title__in=data.pop('films_names'))
+    else:
+        films = False
+
+    if id:
+        people_object = people.objects.get(id=id)
+        try:
+            del data['id']
+        except KeyError:
+            pass
+        for field, value in data.items():
+            setattr(people_object, field, value)
+    else:
+        people_object = people(**data)
+    
+    if planet_object:
+        people_object.home_world = planet_object.first()
+
+    if films:
+        for film in films:
+            film.characters.add(people_object)
+
+    people_object.save()
+
+    return people_object

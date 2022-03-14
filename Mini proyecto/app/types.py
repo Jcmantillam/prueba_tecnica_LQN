@@ -49,5 +49,6 @@ class FilmType(DjangoObjectType):
         filter_fields = {
             'title': ['iexact', 'icontains', 'contains', 'exact'],
             'episode_id': ['exact'],
-            'release_date': ['exact']
+            'release_date': ['exact'],
+            'characters': ['exact']
         }
