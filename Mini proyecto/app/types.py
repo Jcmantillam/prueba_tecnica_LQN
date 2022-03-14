@@ -24,7 +24,7 @@ class PeopleType(DjangoObjectType):
             'hair_color': ['exact'],
             'eye_color': ['exact'],
         }
-        convert_choices_to_enum = False
+        convert_choices_to_enum = ["gender"]
 
 
 class DirectorType(DjangoObjectType):
